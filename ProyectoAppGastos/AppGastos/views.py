@@ -14,13 +14,16 @@ def ingreso_gasto(request,Fecha,Categoria,Importe,Nota,Tipo_movimiento):
             mov_1=int(mov.Importe)
             break
         except:
-            return HttpResponse (f'Error, Por favor ingrese un numero en la seccion importe')
+            #return HttpResponse (f'Error, Por favor ingrese un numero en la seccion importe')
+            return render (request,"ingreso_gasto-error.html", {'Fecha': Fecha ,'Categoria': Categoria,'Importe': Importe,'Nota':Nota,'Tipo_movimiento':Tipo_movimiento  })
     #Logica para diferenciar entre ingreso y gasto 
     if (int(mov_1 <0 )):
-        return HttpResponse(f'Gasto agregado con exito ')
+        return render (request,"ingresar_gasto.html", {'Fecha': Fecha ,'Categoria': Categoria,'Importe': Importe,'Nota':Nota,'Tipo_movimiento':Tipo_movimiento  })
     elif (int(mov_1>0)):
-        return HttpResponse(f'Ingreso agregado con exito ')
+        return render (request,"ingresar_ingreso.html", {'Fecha': Fecha ,'Categoria': Categoria,'Importe': Importe,'Nota':Nota,'Tipo_movimiento':Tipo_movimiento  })
 
  
-def dashboard(request):
-    return HttpResponse("pagina de inicio")
+def inicio(request):
+    return render (request,"Inicio.html")
+
+
