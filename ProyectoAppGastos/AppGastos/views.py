@@ -26,6 +26,8 @@ def ingreso_gasto(request,Fecha,Categoria,Importe,Nota,Tipo_movimiento):
 def inicio(request):
     return render (request,"Inicio.html")
 
+def dashboard(request):
+    return render (request,"Dashboard.html")
 
 def crear_usuario(request, Nombre, Apellido, Email, Contraseña):
 
