@@ -57,8 +57,3 @@ def movimientos_form(request):
         return render(request, "AppGastos/ingresar_gasto.html")
 
     return render(request, "AppGastos/movimientosFormulario.html")
-
-
-def cualquiera(request):
-
-    return render(request, "AppGastos/cualquiera.html")

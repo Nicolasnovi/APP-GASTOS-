@@ -7,5 +7,4 @@ urlpatterns = [
     path('crear-usuario/<Nombre>/<Apellido>/<Email>/<Contraseña>/', crear_usuario),
     path('usuarioFormulario/', usuario_form),
     path('movimientosFormulario/', movimientos_form),
-    path('cualquiera/', cualquiera),
 ]
