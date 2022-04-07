@@ -1,8 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import movimientos, usuario
+from .models import movimientos, usuario, objetivo
 from django.http import response
+
 # Create your views here.
+
+def objetivos(request,Objetivo,MontoDelObjetivo,Fecha,Observacion):
+
+    nuevo_objetivo = objetivo(
+        Objetivo = Objetivo,
+        MontoDelObjetivo = MontoDelObjetivo,
+        Fecha= Fecha, Observacion= Observacion
+        )
+    nuevo_objetivo.save()
+
+    return HttpResponse('Objetivo creado con éxito!')
+
+     
 
 def ingreso_gasto(request,Fecha,Categoria,Importe,Nota,Tipo_movimiento):
     #puse un while para que cada vez que se ingrese alguna palabra en vez de un numero tire un error y te vuelva a pedir un numero 
@@ -20,11 +34,9 @@ def ingreso_gasto(request,Fecha,Categoria,Importe,Nota,Tipo_movimiento):
         return HttpResponse(f'Gasto agregado con exito ')
     elif (int(mov_1>0)):
         return HttpResponse(f'Ingreso agregado con exito ')
-
  
 def dashboard(request):
     return HttpResponse("pagina de inicio")
-
 
 def crear_usuario(request, Nombre, Apellido, Email, Contraseña):
 

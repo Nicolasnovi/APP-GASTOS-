@@ -1,6 +1,18 @@
+from pyexpat import model
 from django.db import models
+from django.forms import CharField,DateField
 
 # Create your models here.
+class objetivo(models.Model):
+    Objetivo = models.CharField("Objetivo", max_length=30)
+    MontoDelObjetivo = models.IntegerField()
+    Fecha= models.CharField("Fecha", max_length=8)
+    Observacion = models.CharField("Observacion", max_length=100)
+
+    def __str__(self):
+        return(f"{self.Objetivo} - {self.MontoDelObjetivo} - ({self.Fecha}) - {self.Observacion}")
+
+
 class movimientos(models.Model):
     Fecha= models.CharField('Fecha', max_length=50)
     Categoria= models.CharField('Categoria', max_length=50)
