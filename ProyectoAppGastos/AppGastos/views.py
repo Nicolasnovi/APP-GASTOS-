@@ -54,6 +54,6 @@ def movimientos_form(request):
         nuevo_movimiento = movimientos(request.POST["fecha"], request.POST["categoria"], request.POST["importe"], request.POST["tipo_movimiento"])
         nuevo_movimiento.save()
 
-        return render(request, "AppGastos/ingresar_gasto.html")
+        return render(request, "ingresar_gasto.html")
 
-    return render(request, "AppGastos/movimientosFormulario.html")
+    return render(request, "movimientosFormulario.html")
