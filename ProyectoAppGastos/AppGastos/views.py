@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import movimientos
+from .models import movimientos, usuario
 from django.http import response
 # Create your views here.
 
@@ -27,3 +27,9 @@ def inicio(request):
     return render (request,"Inicio.html")
 
 
+def crear_usuario(request, Nombre, Apellido, Email, Contraseña):
+
+    nuevo_usuario = usuario(Nombre= Nombre, Apellido= Apellido, Email= Email, Contraseña= Contraseña)
+    nuevo_usuario.save()
+
+    return HttpResponse('Usuario creado con éxito!')
