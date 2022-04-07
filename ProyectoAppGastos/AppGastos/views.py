@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import movimientos
+from .models import movimientos, usuario
 from django.http import response
 # Create your views here.
 
@@ -24,3 +24,11 @@ def ingreso_gasto(request,Fecha,Categoria,Importe,Nota,Tipo_movimiento):
  
 def dashboard(request):
     return HttpResponse("pagina de inicio")
+
+
+def crear_usuario(request, Nombre, Apellido, Email, Contraseña):
+
+    nuevo_usuario = usuario(Nombre= Nombre, Apellido= Apellido, Email= Email, Contraseña= Contraseña)
+    nuevo_usuario.save()
+
+    return HttpResponse('Usuario creado con éxito!')
