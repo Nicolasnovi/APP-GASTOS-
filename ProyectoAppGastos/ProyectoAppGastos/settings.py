@@ -55,7 +55,9 @@ ROOT_URLCONF = 'ProyectoAppGastos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:\\Users\\nicon\\Documents\\curso python coder\\python\\APP-GASTOS-\\ProyectoAppGastos\\AppGastos\\Template\\', 
+        'C:/Users/ezequ/Desktop/Natu/1. Programación/1. Curso CoderHouse/APP-GASTOS-/ProyectoAppGastos/AppGastos/Template'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
