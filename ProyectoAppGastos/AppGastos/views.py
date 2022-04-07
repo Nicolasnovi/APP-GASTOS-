@@ -37,9 +37,28 @@ def crear_usuario(request, Nombre, Apellido, Email, Contraseña):
 
 def usuario_form(request):
 
+    if request.method == "POST":
+        
+        nuevo_usuario = usuario(request.POST["nombre"], request.POST["apellido"], request.POST["email"], request.POST["contraseña"])
+        nuevo_usuario.save()
+
+        return render(request, "AppGastos/usuario_creado.html")
+
     return render(request, "AppGastos/usuarioFormulario.html")
 
 
 def movimientos_form(request):
 
+    if request.method == "POST":
+        
+        nuevo_movimiento = movimientos(request.POST["fecha"], request.POST["categoria"], request.POST["importe"], request.POST["tipo_movimiento"])
+        nuevo_movimiento.save()
+
+        return render(request, "AppGastos/ingresar_gasto.html")
+
     return render(request, "AppGastos/movimientosFormulario.html")
+
+
+def cualquiera(request):
+
+    return render(request, "AppGastos/cualquiera.html")

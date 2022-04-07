@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action="/usuarioFormulario" method="post">
+    <form action="AppGastos/usuarioFormulario/" method="POST">{% csrf_token %}
         
         <p>Nombre: <input type="text" name="nombre" placeholder="Ingrese su Nombre"></p>
         <p>Apellido: <input type="text" name="apellido" placeholder="Ingrese su Apellido"></p>

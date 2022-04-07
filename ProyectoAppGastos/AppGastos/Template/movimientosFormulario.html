@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action="/movimientosFormulario" method="POST">
+    <form action="AppGastos/movimientosFormulario/" method="POST">{% csrf_token %}
         
         <p>Fecha: <input type="text" name="fecha" placeholder="Fecha"></p>
         <p>Categoria: <input type="text" name="categoria" placeholder="Alimentos, Servicios, etc..."></p>
