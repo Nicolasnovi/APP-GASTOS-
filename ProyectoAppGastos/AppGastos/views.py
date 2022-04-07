@@ -31,5 +31,15 @@ def crear_usuario(request, Nombre, Apellido, Email, Contraseña):
 
     nuevo_usuario = usuario(Nombre= Nombre, Apellido= Apellido, Email= Email, Contraseña= Contraseña)
     nuevo_usuario.save()
-    
+
     return render(request, 'usuario_creado.html')
+
+
+def usuario_form(request):
+
+    return render(request, "AppGastos/usuarioFormulario.html")
+
+
+def movimientos_form(request):
+
+    return render(request, "AppGastos/movimientosFormulario.html")
