@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import cualquiera, ingreso_gasto, inicio, crear_usuario, movimientos_form, usuario_form
+from .views import ingreso_gasto, inicio, crear_usuario, movimientos_form, usuario_form
 
 urlpatterns = [
     path('',inicio),
