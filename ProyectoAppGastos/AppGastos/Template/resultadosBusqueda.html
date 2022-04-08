@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resultadosBusqueda</title>
+</head>
+<body>
+
+    <p> Estamos buscando el: {{Nombre}} </p>
+
+    
+    {% if usuarios %}
+
+    <ul>
+        
+    {% for usuario in usuarios %}
+
+        <li>{{usuario.Nombre}}</li>
+        <li>{{usuario.Contraseña}}</li>
+            
+    {% endfor %}
+            
+    </ul>
+        
+    {% endif %}
+        
+    
+</body>
+</html>

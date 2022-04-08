@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import movimientos, objetivo, usuario
-from django.http import response
 from .forms import ObjetivoFormulario, MovimientosFormulario, UsuarioFormulario
 # Create your views here.
 
@@ -106,3 +105,24 @@ def objetivo_form(request):
         miFormulario = ObjetivoFormulario()
 
     return render(request, "objetivoFormulario.html", {"miFormulario":miFormulario})
+
+
+def busqueda_usuario(request):
+
+    return render(request, "busqueda_usuario.html")
+
+
+def buscar(request):
+
+    if request.GET["Nombre"]:
+
+        Nombre = request.GET['Nombre']
+        usuarios = usuario.objects.filter(Nombre__icontains=Nombre)
+
+        return render(request, "resultadosBusqueda.html", {"Nombre": Nombre, "contraseña": usuarios})
+
+    else:
+
+        respuesta = "No enviaste datos"
+
+    return HttpResponse(respuesta)
