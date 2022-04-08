@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import movimientos, usuario
+from .models import movimientos, objetivo, usuario
 from django.http import response
+from .forms import ObjetivoFormulario, MovimientosFormulario, UsuarioFormulario
 # Create your views here.
 
 def ingreso_gasto(request,Fecha,Categoria,Importe,Nota,Tipo_movimiento):
@@ -38,22 +39,70 @@ def crear_usuario(request, Nombre, Apellido, Email, Contraseña):
 def usuario_form(request):
 
     if request.method == "POST":
+
+        miFormulario = UsuarioFormulario(request.POST)
+
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+
+            informacion = miFormulario.cleaned_data
+
+            nuevo_usuario = usuario(Nombre=informacion['Nombre'], Apellido=informacion['Apellido'], Email=informacion['Email'], Contraseña=informacion['Contraseña'])
+            nuevo_usuario.save()
         
-        nuevo_usuario = usuario(request.POST["nombre"], request.POST["apellido"], request.POST["email"], request.POST["contraseña"])
-        nuevo_usuario.save()
+            return render(request, "usuario_creado.html")
 
-        return render(request, "AppGastos/usuario_creado.html")
+    else:
 
-    return render(request, "AppGastos/usuarioFormulario.html")
+        miFormulario = UsuarioFormulario()
+
+    return render(request, "usuarioFormulario.html", {"miFormulario":miFormulario})
 
 
 def movimientos_form(request):
 
     if request.method == "POST":
+
+        miFormulario = MovimientosFormulario(request.POST)
+
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+
+            informacion = miFormulario.cleaned_data
+
+            nuevo_movimiento = movimientos(Fecha=informacion['Fecha'], Categoria=informacion['Categoria'], Importe=informacion['Importe'], Nota=informacion['Nota'], Tipo_movimiento=informacion['Tipo_movimiento'])
+            nuevo_movimiento.save()
         
-        nuevo_movimiento = movimientos(request.POST["fecha"], request.POST["categoria"], request.POST["importe"], request.POST["tipo_movimiento"])
-        nuevo_movimiento.save()
+            return render(request, "ingresar_ingreso.html")
 
-        return render(request, "AppGastos/ingresar_gasto.html")
+    else:
 
-    return render(request, "AppGastos/movimientosFormulario.html")
+        miFormulario = MovimientosFormulario()
+
+    return render(request, "movimientosFormulario.html", {"miFormulario":miFormulario})
+
+
+def objetivo_form(request):
+
+    if request.method == "POST":
+
+        miFormulario = ObjetivoFormulario(request.POST)
+
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+
+            informacion = miFormulario.cleaned_data
+
+            nuevo_objetivo = objetivo(Objetivo=informacion['Objetivo'], MontoDelObjetivo=informacion['MontoDelObjetivo'], Fecha=informacion['Fecha'], Observacion=informacion['Observacion'])
+            nuevo_objetivo.save()
+        
+            return render(request, "objetivo_creado.html")
+
+    else:
+
+        miFormulario = ObjetivoFormulario()
+
+    return render(request, "objetivoFormulario.html", {"miFormulario":miFormulario})

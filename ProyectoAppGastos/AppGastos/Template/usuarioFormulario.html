@@ -8,13 +8,22 @@
 </head>
 <body>
 
-    <form action="AppGastos/usuarioFormulario/" method="POST">{% csrf_token %}
-        
-        <p>Nombre: <input type="text" name="nombre" placeholder="Ingrese su Nombre"></p>
-        <p>Apellido: <input type="text" name="apellido" placeholder="Ingrese su Apellido"></p>
-        <p>Email: <input type="text" name="email" placeholder="ejemplo@gmail.com"></p>
-        <p>Contraseña: <input type="text" name="contraseña" placeholder="Máximo 20 caracteres"></p>
+    
+    {% if miFormulario.errors %}
 
+    <p style="color: red;"> Estan mal los datos, por favor revisar </p>
+        
+    {% endif %}
+        
+
+    <form action="" method="POST">{% csrf_token %}
+
+        <table>
+
+            {{ miFormulario.as_table }}
+
+        </table>
+   
         <input type="submit" value="Crear">
 
     </form>
