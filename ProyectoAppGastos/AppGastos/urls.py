@@ -1,11 +1,14 @@
 from django.urls import path
 from .views import dashboard, ingreso_gasto, inicio
 from .views import crear_usuario, ingreso_gasto
+from .views import ingreso_gasto, inicio, crear_usuario, movimientos_form, objetivo_form, usuario_form
 
 urlpatterns = [
-    path('agregar-movimiento/<Fecha>/<Categoria>/<Importe>/<Nota>/<Tipo_movimiento>/',ingreso_gasto),
     path('',inicio),
+    path('agregar-movimiento/<Fecha>/<Categoria>/<Importe>/<Nota>/<Tipo_movimiento>/',ingreso_gasto),
     path('crear-usuario/<Nombre>/<Apellido>/<Email>/<Contraseña>/', crear_usuario),
-    path('Dashboard/',dashboard)
-
+    path('Dashboard/',dashboard),
+    path('usuarioFormulario/', usuario_form),
+    path('movimientosFormulario/', movimientos_form),
+    path('objetivoFormulario/', objetivo_form),
 ]
